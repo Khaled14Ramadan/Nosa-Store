@@ -1,0 +1,25 @@
+<h1 class="text-center mb-5" *ngIf="theTotalPrice">Total Price: <span class="text-info">{{theTotalPrice|currency :"EGP":"EGP":"2.0":"fr" }}</span> </h1>
+
+<div class="goToProducts text-center" *ngIf="!theTotalPrice">
+    <div class="w-25 m-auto">
+        <img class="w-100" src="../../../assets/image/cart.png" alt="">
+    </div>
+    <h2 class="mb-4">Your cart is empty!</h2>
+    <a [routerLink]="['/']"><button class="btn btn-info text-uppercase text-white">Start shopping</button></a>
+</div>
+
+<div class="allproduct" *ngFor="let product of productsCart">
+    <div class="product d-flex align-items-center mb-5 pb-4 border border-1 border-end-0 border-start-0 border-top-0">
+        <div class="image w-25 me-4 text-center"><img [src]="product.image" alt="" class="w-75 h-75"></div>
+        <div class="product-details w-75">
+            <h2 class="name">{{product.name}}</h2>
+            <h4 class="price">Price : <span class="text-info">{{product.price |currency :"EGP":"EGP":"2.2":"fr" }}</span></h4>
+            <div class="counter">
+                <button class="btn btn-info" (click)="increase(product)">+</button>
+                <span class="m-4">{{product.counterBuy}}</span>
+                <button class="btn btn-danger" (click)="decrease(product)">-</button>
+            </div>
+        </div>
+        <div class="remove w-25"><button class="btn btn-danger" (click)="removeProduct(product)">Remove</button></div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="wishList w-100 shadow bg-white ">
+    <h2 class="pt-2 pb-2 mb-4 text-center border border-info border-1 border-end-0 border-start-0 border-top-0">Wish
+        List</h2>
+        <div class="emptyList" *ngIf="!products.length">
+            <div class="w-25 m-auto">
+                <img class="w-100" src="../../../assets/image/babe icon.png" alt="">
+            </div>
+            <h4 class="pb-2 text-center">The Wish List Is Empty!</h4>
+        </div>
+    <div class="container">
+        <div class="row align-items-center w-100 border border-1 border-end-0 border-start-0 border-top-0"
+            *ngFor="let product of products">
+            <div class="col-4">
+                <div class="image">
+                    <a [routerLink]="['details', product.id]">
+                        <img [src]="product.image" class="w-100" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="contant">
+                    <h4 class="name">{{product.name | slice:0:30}}</h4>
+                    <h3 class="text-info">{{product.price |currency :"EGP":"EGP":"2.2":"fr" }}</h3>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="remove">
+                    <button class="ms-1 btn btn-danger" (click)="removeProduct(product)">
+                        <fa-icon [icon]="baskerRemove"> </fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

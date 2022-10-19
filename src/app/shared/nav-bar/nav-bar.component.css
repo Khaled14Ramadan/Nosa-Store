@@ -1,0 +1,40 @@
+.counter{
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -.5rem;
+    right: -.5rem;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+.icon {
+    font-size: 1.5rem;
+    border: none;
+}
+
+.wishList{
+    width: 30%;
+    position:absolute;
+    top: 100%;
+    right:   0;
+    z-index: 20;
+}
+
+@media (max-width :992px){
+    .counter{
+        top: -.5rem;
+        right: -1rem;
+    }
+    .wishList{
+        width: 50%;
+    }
+}
+
+.nav-item {
+    text-align: center;
+}

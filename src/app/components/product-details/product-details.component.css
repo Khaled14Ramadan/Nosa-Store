@@ -1,0 +1,10 @@
+.rate{
+    padding: 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 50%;
+}
