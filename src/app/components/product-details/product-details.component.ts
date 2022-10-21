@@ -39,6 +39,13 @@ export class ProductDetailsComponent implements OnInit {
       // console.log(product);
       this.check=false;//this for spinner
       this.product = product;
+
+      this.cartProduct.productsCards.map((item)=>{
+        if(item.id == this.product.id){
+          this.product = item;
+          console.log(" details product : " , this.product);
+        }
+      });
     })
   }
 

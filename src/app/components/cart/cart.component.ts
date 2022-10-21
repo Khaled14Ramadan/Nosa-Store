@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartProductService } from 'src/app/services/cart-product.service';
 import { Product } from 'src/app/interfaces/product';
+import { ToastServiceService } from './../../services/toast-service.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit , OnDestroy {
   productsCart:Product[]=[];
   theTotalPrice:number = 0;
-  constructor(private cartProduct:CartProductService) { }
+
+  constructor(
+    private cartProduct:CartProductService,
+    private toast: ToastServiceService,
+    ) { }
 
   ngOnInit(): void {
     this.productsCart = this.cartProduct.productsCards;
     this.tottalprice();
+  }
+
+  ngOnDestroy():void {
+      this.toast.clear();
   }
 
   increase(p:Product)
@@ -23,12 +32,18 @@ export class CartComponent implements OnInit {
     this.productsCart = this.cartProduct.productsCards;
     this.tottalprice();
 
+    //toaster for add to cart
+    this.toast.show(`Add  ${p.name} `, { classname: 'bg-success text-light', delay: 2000 , list: "Cart"  });
+
   }
 
   decrease(p:Product){
     this.cartProduct.decreaseProduct(p);
     this.productsCart = this.cartProduct.productsCards;
     this.tottalprice();
+    
+    //toaster for remove from cart
+    this.toast.show(`Remove  ${p.name} `, { classname: 'bg-danger text-light', delay: 2000 , list: "Cart" });
   }
 
   tottalprice(){
@@ -41,5 +56,7 @@ export class CartComponent implements OnInit {
     this.cartProduct.removeProduct(p);
     this.productsCart = this.cartProduct.productsCards;
     this.tottalprice();
+   
   }
+
 }

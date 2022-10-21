@@ -38,6 +38,9 @@ export class CartProductService {
       // console.log(index);
     }
     // console.log(this.productsCards);
+    // console.log('before :  ' ,this.productsCards[index]);
+    this.productsCards[index].count --;
+    // console.log('after : ' , this.productsCards[index]);
 
     this.counter.next(++this.total);
   }
@@ -45,6 +48,9 @@ export class CartProductService {
   decreaseProduct(product:Product){
     let index:number = this.productsCards.indexOf(product);
     this.productsCards[index].counterBuy --;
+    // for increase count in product
+    this.productsCards[index].count ++;
+
     if(this.productsCards[index].counterBuy == 0){
       this.productsCards.splice(index , 1);
     }
@@ -54,6 +60,8 @@ export class CartProductService {
   removeProduct(product:Product){
     let index:number = this.productsCards.indexOf(product);
     this.total = this.total - this.productsCards[index].counterBuy;
+    //to apdate count of product
+    // this.productsCards[index].count += this.productsCards[index].counterBuy;
     console.log(this.total);
     this.counter.next(this.total);
     this.productsCards.splice(index , 1);

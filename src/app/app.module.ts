@@ -27,6 +27,7 @@ import { environment } from '../environments/environment';
 import { registerLocaleData } from '@angular/common';
 
 import localeFr from '@angular/common/locales/fr';
+import { ToastComponent } from './components/toast/toast.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -44,6 +45,7 @@ registerLocaleData(localeFr, 'fr');
     CartComponent,
     ProductDetailsComponent,
     LoaderComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,

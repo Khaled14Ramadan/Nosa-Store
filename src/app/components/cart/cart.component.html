@@ -15,9 +15,10 @@
             <h2 class="name">{{product.name}}</h2>
             <h4 class="price">Price : <span class="text-info">{{product.price |currency :"EGP":"EGP":"2.2":"fr" }}</span></h4>
             <div class="counter">
-                <button class="btn btn-info" (click)="increase(product)">+</button>
+                <button class="btn btn-info" [disabled]="!product.count" (click)="increase(product)">+</button>
                 <span class="m-4">{{product.counterBuy}}</span>
                 <button class="btn btn-danger" (click)="decrease(product)">-</button>
+                <span  *ngIf="!product.count" class="ms-4 text-danger">Out of Stock</span>
             </div>
         </div>
         <div class="remove w-25"><button class="btn btn-danger" (click)="removeProduct(product)">Remove</button></div>
