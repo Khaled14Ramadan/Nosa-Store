@@ -7,8 +7,8 @@
   <div class="card-body">
     <div class="d-flex justify-content-between align-items-center">
       <h5 class="stok" [ngClass]="product.count ? 'text-success' :'text-danger'">
-        <span *ngIf="product.count">in stok</span>
-        <span *ngIf="!product.count">out of stok</span>
+        <span *ngIf="product.count">in stock</span>
+        <span *ngIf="!product.count">out of stock</span>
       </h5>
       <button class="btn heartBtn" [ngClass]="checkExit?'opacity-100':'opacity-50'"  (click)="UpdateWishList()">
         <fa-icon [icon]="wishProduct"></fa-icon>

@@ -5,8 +5,8 @@
   <div class="card-body">
     <h2>{{product.name}}</h2>
     <h5 class="stok" [ngClass]="product.count ? 'text-success' :'text-danger'">
-      <span *ngIf="product.count">in stok</span>
-      <span *ngIf="!product.count">out of stok</span>
+      <span *ngIf="product.count">in stock</span>
+      <span *ngIf="!product.count">out of stock</span>
     </h5>
     <h3 class="text-info">{{product.price |currency :"EGP":"EGP":"2.2":"fr" }}</h3>
 

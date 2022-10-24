@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { CanRegisterDeactivate } from 'src/app/interfaces/can-register-deactivate';
 
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css']
 })
-export class RegisterPageComponent implements OnInit {
+export class RegisterPageComponent implements OnInit , CanRegisterDeactivate{
+ 
   registerForm: FormGroup;
   chechPassword: boolean = true;
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private fb: FormBuilder) {
     this.registerForm = this.fb.group(
       {
@@ -38,15 +40,10 @@ export class RegisterPageComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-
-  canDeactivate(): Observable<boolean> | boolean {
-    // console.log(this.registerForm.dirty);
-    // to check if register is success or not touchd any input
-    if (this.registerForm.valid || !this.registerForm.dirty) {
-      return true;
-    }
-    let confirm = window.confirm("are you sure want leave Registerayin?");
-    return confirm;
+  //from CanRegisterDeactivate to call this method in guard
+  isConfirmLeave(){
+    return  this.registerForm.dirty
   }
+
 
 }

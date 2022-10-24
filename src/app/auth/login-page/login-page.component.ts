@@ -18,7 +18,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   handleSubmit(f: any){
-    console.log(f);
+    // console.log(f);
     this.state.setStateLogin(true);
     this.router.navigate([''])
   }

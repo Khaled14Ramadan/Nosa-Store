@@ -4,6 +4,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from '../app-routing.module';
 import { WishListComponent } from './wish-list/wish-list.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 
 
@@ -13,7 +14,8 @@ import { WishListComponent } from './wish-list/wish-list.component';
 @NgModule({
   declarations: [
     NavBarComponent,
-    WishListComponent
+    WishListComponent,
+    PopUpComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { WishListComponent } from './wish-list/wish-list.component';
     AppRoutingModule
   ],
   exports:[
-    NavBarComponent
+    NavBarComponent,
+    PopUpComponent
   ]
 })
 export class SharedModule { }

@@ -6,6 +6,9 @@ import { CartProductService } from './../../services/cart-product.service';
 import { Store } from '@ngrx/store';
 import { LoginServiceService } from 'src/app/services/login-service.service';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PopUpComponent } from './../pop-up/pop-up.component';
+import { PopUpService } from 'src/app/services/pop-up.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -21,6 +24,8 @@ export class NavBarComponent implements OnInit {
   wishProduct = faHeart;
 
   constructor(
+    private _modalService: NgbModal,
+    private popUpService:PopUpService,
     private state:LoginServiceService,
     private router:Router,
     private cartProducts:CartProductService,
@@ -53,11 +58,8 @@ export class NavBarComponent implements OnInit {
   }
 
   handleLogOut(){
-    const checkLogOut = confirm("are you sure logout ? ");
-    if(checkLogOut){
-      this.state.setStateLogin(false);
-      this.router.navigate(['/login']);
-    }
+    this.popUpService.setPopUpState('logout');
+    this._modalService.open(PopUpComponent);
   }
 
   handelNavigate(){
