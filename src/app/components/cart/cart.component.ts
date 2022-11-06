@@ -74,7 +74,6 @@ export class CartComponent implements OnInit, OnDestroy {
         this.cartProduct.removeProduct(p);
         this.productsCart = this.cartProduct.productsCards;
         this.tottalprice();
-
         //toaster for remove from cart
         this.toast.show(`Remove  ${p.name} `, { classname: 'bg-danger text-light', delay: 2000, list: "Cart" });
       }

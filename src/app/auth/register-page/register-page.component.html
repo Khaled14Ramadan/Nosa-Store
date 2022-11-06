@@ -32,7 +32,7 @@
         <div id="userName" class="form-text text-danger" *ngIf="registerContral['userName'].errors && registerContral['userName'].errors['required']">
             userName is Required.
         </div>
-        <div id="emailValid" class="form-text text-danger" *ngIf="registerForm.controls['userName'].errors && registerForm.controls['userName'].errors['pattern']">
+        <div id="userNameValid" class="form-text text-danger" *ngIf="registerForm.controls['userName'].errors && registerForm.controls['userName'].errors['pattern']">
             User_Name invalid.
           </div>
       </div>
@@ -42,15 +42,23 @@
       <!-- password -->
     <div class="mb-3">
       <label for="password" class="form-label">Password</label>
-      <input type="password" class="form-control" formControlName="password"  id="password" id="password" 
-       name="password" >
+      <input type="password" class="form-control" formControlName="password"
+        id="password"
+        name="password"
+        (keyup)="passwordChange()" >
     </div>
     <div *ngIf="registerContral['password'].touched && ! registerContral['password'].valid">
-        <div id="userName" class="form-text text-danger" *ngIf="registerContral['password'].errors && registerContral['password'].errors['required']">
+        <div id="password" class="form-text text-danger" *ngIf="registerContral['password'].errors && registerContral['password'].errors['required']">
             password is Required.
         </div>
-        <div id="emailValid" class="form-text text-danger" *ngIf="registerForm.controls['password'].errors && registerForm.controls['password'].errors['pattern']">
+        <div id="passwordValid" class="form-text text-danger" *ngIf="registerForm.controls['password'].errors && registerForm.controls['password'].errors['pattern']">
             password invalid.
+            <ul>
+              <li [ngClass]="checkPassLowerCase?'text-secondary' : 'text-danger'">at least one small letter</li>
+              <li [ngClass]="checkPassUpperCase?'text-secondary' : 'text-danger'">at least one capital  letter</li>
+              <li [ngClass]="checkPassNum?'text-secondary' : 'text-danger'">at least one Number</li>
+              <li [ngClass]="checkPassLength?'text-secondary' : 'text-danger'">Minimum length 8 characters</li>
+            </ul>
           </div>
       </div>
 
@@ -60,10 +68,10 @@
        name="password" >
     </div>
     <div *ngIf="registerContral['confirmPassword'].touched && ! registerContral['confirmPassword'].valid">
-        <div id="userName" class="form-text text-danger" *ngIf="registerContral['confirmPassword'].errors && registerContral['confirmPassword'].errors['required']">
+        <div id="confirmPassword" class="form-text text-danger" *ngIf="registerContral['confirmPassword'].errors && registerContral['confirmPassword'].errors['required']">
             password is Required.
         </div>
-        <div id="emailValid" class="form-text text-danger" *ngIf="registerForm.controls['confirmPassword'].errors && registerForm.controls['confirmPassword'].errors['pattern']">
+        <div id="confirmPasswordValid" class="form-text text-danger" *ngIf="registerForm.controls['confirmPassword'].errors && registerForm.controls['confirmPassword'].errors['pattern']">
             password invalid.
           </div>
       </div>

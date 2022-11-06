@@ -8,3 +8,9 @@
     text-align: center;
     border-radius: 50%;
 }
+
+@media (max-width:768px){
+    .rate{
+        padding: .5rem;
+    }
+}

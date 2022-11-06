@@ -10,6 +10,8 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 })
 export class LoginPageComponent implements OnInit {
 
+  navigateToCart : boolean =false;
+
   constructor(private state:LoginServiceService,
     private router:Router,
     ) { }
@@ -20,7 +22,8 @@ export class LoginPageComponent implements OnInit {
   handleSubmit(f: any){
     // console.log(f);
     this.state.setStateLogin(true);
-    this.router.navigate([''])
+    this.router.navigate(['cart']);
+    
   }
 
 }

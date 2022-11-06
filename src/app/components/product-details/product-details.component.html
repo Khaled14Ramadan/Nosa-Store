@@ -1,19 +1,24 @@
 <app-loader></app-loader>
-
-<div *ngIf="!check" class="text-center d-flex justify-content-between align-items-center position-relative">
-  <img [src]="product.image" [ngClass]="product.id?'':'placeholder'" class="card-img-top w-50" alt="...">
-  <div class="card-body">
-    <h2>{{product.name}}</h2>
-    <h5 class="stok" [ngClass]="product.count ? 'text-success' :'text-danger'">
-      <span *ngIf="product.count">in stock</span>
-      <span *ngIf="!product.count">out of stock</span>
-    </h5>
-    <h3 class="text-info">{{product.price |currency :"EGP":"EGP":"2.2":"fr" }}</h3>
-
-    <p class="card-text">{{product.description}}</p>
-    <button class="btn btn-info text-white" [disabled]="!product.count" (click)="addProduvt()">Add to Cart</button>
-    <p>{{product.createdAt | date :'medium'}}</p>
+<!-- d-flex flex-md-row flex-column justify-content-between -->
+<div *ngIf="!check" class="text-center row align-items-center position-relative">
+  <div class="col-sm-5">
+    <img [src]="product.image" [ngClass]="product.id?'':'placeholder'" class="card-img-top w-100" alt="...">
   </div>
-  <div class="rate text-white" [ngClass]="product.rate>6?'bg-primary':'bg-danger'" *ngIf="product.rate">{{product.rate}}
+  <div class="col-sm-7">
+    <div class="card-body">
+      <h2>{{product.name}}</h2>
+      <h5 class="stok" [ngClass]="product.count ? 'text-success' :'text-danger'">
+        <span *ngIf="product.count">in stock</span>
+        <span *ngIf="!product.count">out of stock</span>
+      </h5>
+      <h3 class="text-info">{{product.price |currency :"EGP":"EGP":"2.2":"fr" }}</h3>
+
+      <p class="card-text">{{product.description}}</p>
+      <button class="btn btn-info text-white" [disabled]="!product.count" (click)="addProduvt()">Add to Cart</button>
+      <p>{{product.createdAt | date :'medium'}}</p>
+    </div>
+    <div class="rate text-white" [ngClass]="product.rate>6?'bg-primary':'bg-danger'" *ngIf="product.rate">
+      {{product.rate}}
+    </div>
   </div>
 </div>

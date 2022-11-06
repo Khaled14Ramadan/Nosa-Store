@@ -9,7 +9,11 @@ import { CanRegisterDeactivate } from 'src/app/interfaces/can-register-deactivat
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent implements OnInit , CanRegisterDeactivate{
- 
+ checkPassLowerCase :boolean =false;
+ checkPassUpperCase :boolean =false;
+ checkPassNum :boolean =false;
+ checkPassLength : boolean =false;
+
   registerForm: FormGroup;
   chechPassword: boolean = true;
   constructor(
@@ -45,5 +49,12 @@ export class RegisterPageComponent implements OnInit , CanRegisterDeactivate{
     return  this.registerForm.dirty
   }
 
+  passwordChange(){
+    let pass = this.registerForm.controls['password'].value;
 
+    this.checkPassLowerCase = pass.match(/[a-z]+/g) ? true : false ;
+    this.checkPassUpperCase = pass.match(/[A-Z]+/g) ? true : false ;
+    this.checkPassNum = pass.match(/\d+/g) ? true : false ;
+    this.checkPassLength = pass.match(/.{8,}/g) ? true : false ;
+  }
 }
